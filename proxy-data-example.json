@@ -1,0 +1,9 @@
+[
+    {
+        "proxy_to_uri": "http://localhost:5000/proxy",
+        "proxy_to_data_json": []
+    },
+    {
+        "proxy_to_uri": "http://localhost:5000/proxy"
+    }
+]

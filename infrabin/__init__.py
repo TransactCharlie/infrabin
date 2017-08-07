@@ -3,7 +3,7 @@ from __future__ import print_function
 import os
 import requests
 from flask import Flask, jsonify, request
-from flask.ext.cache import Cache
+from flask_caching import Cache
 from .helpers import status_code
 
 
@@ -70,3 +70,10 @@ def aws(metadata_categories):
     if r.status_code == 404:
         return status_code(404)
     return jsonify({metadata_categories: r})
+
+
+@app.route("/proxy", methods=["POST"])
+def proxy():
+    for endpoint in request.get_json():
+        pass
+    return status_code(200)
