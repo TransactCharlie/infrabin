@@ -4,18 +4,8 @@ See:
 https://packaging.python.org/en/latest/distributing.html
 https://github.com/pypa/sampleproject
 """
-
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
-# To use a consistent encoding
-from codecs import open
-from os import path
-
-here = path.abspath(path.dirname(__file__))
-
-# Get the long description from the README file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()
 
 setup(
     name='infrabin',
@@ -23,10 +13,9 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.0.2',
+    version='0.0.4',
 
     description='Like httpbin, but for infrastructure',
-    long_description=long_description,
 
     # The project's main homepage.
     url='https://github.com/maruina/infrabin',
@@ -44,7 +33,7 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
@@ -68,10 +57,11 @@ setup(
     # simple. Or you can use find_packages().
     packages=find_packages("src", exclude=['contrib', 'docs', 'tests']),
     package_dir={'': 'src'},
-    install_requires=['Flask', 'requests', 'Flask-Cache', 'waitress'],
+    install_requires=['Flask', 'requests', 'Flask-Caching', 'waitress',
+                      'netifaces', 'dnspython', 'decorator', 'six'],
     setup_requires=['pytest-runner'],
     tests_requires=['pytest', 'pytest-flask', 'tox'],
-    entry_points = '''
+    entry_points='''
          [console_scripts]
          infrabin=infrabin.scripts.cli:infrabin
          '''
